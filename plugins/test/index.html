@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="theme-color" content="#333333">
+        <title>ToolBox</title>
+        <link rel="stylesheet" href="./style.css">
+        <link rel="icon" href="/android-chrome-512x512.png">
+    </head>
+    <body>
+        <!-- <a href="https://www.example.com" target="_blank" rel="noopener noreferrer"></a> -->
+        <div class="main-row">
+            <div class="column-container"> 
+                <p id="warning">Оберіть дію</p>
+                <div class="termial-line hidden-element">
+                    <span id="term">>_</span>
+                    <input type="text" placeholder="тут команди" id="cmd-str">
+                    <p>Для допомоги введіть [help]</p>
+                </div>
+                <input type="text" placeholder="Текст" id="str" class="hidden-element">
+                <input type="number" placeholder="Кількість повторень" id="num" class="hidden-element">
+                <input type="number" placeholder="Початок відліку" id="startFrom" class="hidden-element">
+                <input type="number" placeholder="Кінець відліку" id="end" class="hidden-element">
+                <input type="number" placeholder="Довжина пароля" id="numOfLength" class="hidden-element">
+                <input type="number" placeholder="Кількість кроків" id="staps" class="hidden-element">
+                <input type="number" placeholder="Початок А(опціонально)" id="startA" class="hidden-element">
+                <input type="number" placeholder="Початок Б(опціонально)" id="startB" class="hidden-element">
+                <label id="checkbox" class="hidden-element">
+                    <input type="checkbox" name="Ітерації" id="ite">
+                    Ітерації
+                </label>
+                <input type="text" placeholder="Валюта" id="cc" class="hidden-element">
+                <!-- <select>
+                    <option value="">Оберіть</option>
+                </select> -->
+            </div>
+            <div class="container">
+                <select id="select">
+                    <option value="">Оберіть</option>
+                    <option value="repeatStr">Повторення рядка</option>
+                    <option value="countStr">Порахувати довжину рядка</option>
+                    <option value="count">Порахувати</option>
+                    <option value="genPass">Згенерувати пароль</option>
+                    <option value="fib">Функція фібоначчі</option>
+                    <option value="getRate">Валюти</option>
+                    <option value="comand">>_ Команди</option>
+                </select>
+                <select id="spcSelect" class="hidden-element">
+                    <option value="whith">З пробілами</option>
+                    <option value="whithOut">Без пробілів</option>
+                    <option value="whithComa">Через кому</option>
+                    <option value="arrayFormat">Без пробілів та через кому(формат масива)</option>
+                </select>
+                <button id="doIt">Виконати</button>
+            </div>
+        </div>
+        <button id="openModalBtn">Відкрити вікно</button>
+        <button id="clear">Очистити</button>
+        <div class="output">
+            <p id="output"></p>
+        </div>
+        
+        <div class="modal-overlay myModal">
+            <div id="myModalContent">
+            <button id="closeModal" style="top: 20%;">&times;</button>
+            <p >Це модальне вікно!</p>
+            <ul id="storage-list"></ul>
+            </div>
+        </div>
+
+        <script src="./script.min.js"></script>
+        <!-- <script type="module" src="../script.js"></script> -->
+    </body>
+</html>

@@ -1,0 +1,73 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    background-color: #181818;
+    color: #fff;
+    overflow: hidden;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+#topBar {
+    height: 40px;
+    background: #222;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    flex-shrink: 0;
+}
+
+#mainArea {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+}
+
+#sideBar {
+    width: 60px;
+    background: #222;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+}
+
+.container {
+    flex: 1;
+    position: relative;
+    padding: 5px 5px 5px 5px;
+    display: flex;
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: #252525;
+    border-radius: 8px;
+}
+
+.modal {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+}
+
+.contentModal {
+    background: #333;
+    padding: 40px;
+    border-radius: 8px;
+    border: 1px solid #555;
+    min-width: 300px;
+    min-height: 100px;
+}
+
+#h {
+    top: 10px;
+}

@@ -1,0 +1,8 @@
+{
+    "name": "toolBox",
+    "version": "v 1.0.0",
+    "description": "Tool box",
+    "author": "MelmanQ7",
+    "license": "MIT",
+    "type": "module"
+}
