@@ -1,9 +1,9 @@
-let btn = document.getElementById('choiceBtn');
-let cont = document.getElementById('iframeCont');
-const modal = document.querySelector('.modal');
-const contentModal = document.querySelector('.contentModal');
+import { btn, iframeCont, modal, contentModal } from "./variables.js";
+import { showPlugin, closeModal } from "./uiux.js";
 
-let plugins = {};
+function init() {
+    closeModal();
+}
 
 async function getPlugs() {
     let responce = await fetch('./plugins.json');
@@ -38,48 +38,9 @@ async function showList() {
     };
 }
 
-async function showPlugin(item) {
-    console.log("start");
-
-    cont.style.display = "block";
-    cont.innerHTML = '';
-    const url = `./plugins/${item}/index.html`;
-
-    try {
-
-        console.log("fetch:", url);
-
-        const response = await fetch(url, { method: "HEAD" });
-
-        console.log("status:", response.status);
-
-        const myFrame = document.createElement("iframe");
-
-        if (response.ok) {
-            console.log("file exists");
-            myFrame.src = url;
-        } else {
-            console.log("file NOT found");
-            myFrame.src = "warn.html";
-        }
-
-        cont.append(myFrame);
-
-    } catch (error) {
-
-        console.log("FETCH ERROR", error);
-
-        const myFrame = document.createElement("iframe");
-        myFrame.src = "warn.html";
-        cont.append(myFrame);
-
-    }
-}
-
-cont.style.display = "none";
-
-window.addEventListener('keyup', (e) => {
-    if (e.altKey && e.key === "w") {
+window.addEventListener('keydown', (e) => {
+    let second = e.key === "w" || e.key === "W" || e.key === "c" || e.key === "C";
+    if (e.altKey && second) {
         modal.style.display = "flex";
         showList();
     }
@@ -97,3 +58,18 @@ contentModal.addEventListener('click', (e) => {
 modal.addEventListener('click', () => {
     modal.style.display = "none";
 });
+
+window.addEventListener('message', (e) => {
+    if (e.data.type) {
+        console.log("Plugin error:", e.data.message);
+    }
+});
+
+window.addEventListener('keyup', (e) => {
+    let second = e.key === 'q' || e.key === 'Q';
+    if (e.key === 'Escape' || (e.altKey && second)) {
+        modal.style.display = 'none';
+    }
+});
+
+init();
