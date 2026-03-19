@@ -6,17 +6,17 @@ function init() {
 }
 
 async function getPlugs() {
-    let responce = await fetch('./plugins.json');
-    let data = await responce.json();
+    const { invoke } = window.__TAURI__.core;
+    const list = await invoke('read_plugins_dir', { external: true });
 
-    return data;
+    return list;
 }
 
 async function showList() {
     let userlist = document.querySelector('#list');
     let plugs = await getPlugs();
 
-    const list = Object.values(plugs);
+    const list = plugs;
 
     let html = ``;
 
@@ -33,7 +33,7 @@ async function showList() {
     userlist.onclick = (e) => {
         if (e.target.classList.contains('item')) {
             const index = Number(e.target.dataset.index);
-            showPlugin(list[index]);
+            showPlugin(list[index], true);
         }
     };
 }
@@ -59,11 +59,11 @@ modal.addEventListener('click', () => {
     modal.style.display = "none";
 });
 
-window.addEventListener('message', (e) => {
-    if (e.data.type) {
-        console.log("Plugin error:", e.data.message);
-    }
-});
+// window.addEventListener('message', (e) => {
+//     if (e.data.type) {
+//         console.log("Plugin error:", e.data.message);
+//     }
+// });
 
 window.addEventListener('keyup', (e) => {
     let second = e.key === 'q' || e.key === 'Q';
